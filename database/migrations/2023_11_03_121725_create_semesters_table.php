@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('semesters', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('academic_year_id');
+            $table->foreign('academic_year_id')->references('id')->on('academic_years');
+            $table->string('semester_name'); 
+            $table->date('start_date');
+            $table->date('end_date');
             $table->timestamps();
         });
     }
